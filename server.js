@@ -65,6 +65,10 @@ io.on('connection', function (socket) {
     } else {
       scores.blue += 10;
     }
+    if (scores.blue === 200 || scores.red === 200) {
+      scores.blue = 0;
+      scores.red=0;
+    }
     star.x = Math.floor(Math.random() * 700) + 50;
     star.y = Math.floor(Math.random() * 500) + 50;
     io.emit('starLocation', star);
