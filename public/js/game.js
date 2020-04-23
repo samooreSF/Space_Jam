@@ -134,11 +134,3 @@ function update() {
   }
 
 }
-// function endGame(self,playerInfo) {
-
-
-//   if(this.score.red === 200 || playerInfo.score.blue === 2000 ) {
-//     // this.physics.pause();
-//   }
-// this.socket.emit('endgame', {this.score});
-// };
