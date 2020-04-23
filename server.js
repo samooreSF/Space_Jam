@@ -4,14 +4,17 @@ var server = require('http').Server(app);
 var io = require('socket.io').listen(server);
 
 var players = {};
+
 var star = {
-  x: Math.floor(Math.random() * 700) + 50,
+  x: Math.floor(Math.random() * 800) + 50,
   y: Math.floor(Math.random() * 500) + 50
 };
 var scores = {
   blue: 0,
   red: 0
 };
+let teamColor = false;
+
 
 
 app.use(express.static(__dirname + '/public'));
@@ -25,14 +28,16 @@ app.get('/', function (req, res) {
 
 io.on('connection', function (socket) {
   console.log('a user connected: ', socket.id);
-  // create a new player and add it to our players object
+  // create a new player and add it to our players
   players[socket.id] = {
     rotation: 0,
     x: Math.floor(Math.random() * 700) + 50,
     y: Math.floor(Math.random() * 500) + 50,
     playerId: socket.id,
-    team: (Math.floor(Math.random() * 2) == 0) ? 'red' : 'blue'
-  };
+    team:(Math.floor(Math.random() * 2) == 0) ? 'red' : 'blue'
+   };
+
+  //(Math.floor(Math.random() * 2) == 0) ? 'red' : 'blue'
   // send the players object to the new player
   socket.emit('currentPlayers', players);
   // send the star object to the new player
@@ -65,7 +70,7 @@ io.on('connection', function (socket) {
     } else {
       scores.blue += 1;
     }
-    if (scores.blue === 200 || scores.red === 200) {
+    if (scores.blue === 50 || scores.red === 50) {
       scores.blue = 0;
       scores.red=0;
     }
