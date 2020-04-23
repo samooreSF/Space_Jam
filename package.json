@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Scott Westover",
+  "author": "Satchel Moore",
   "license": "ISC",
   "dependencies": {
     "debug": "^4.1.1",
